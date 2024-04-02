@@ -1,11 +1,14 @@
 import React from "react";
-import App from "@/app/components/tagBrowser";
+import TagBrowser from "@/app/components/tagBrowser";
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof App> = { title: "Example/App", component: App };
+const meta: Meta<typeof TagBrowser> = {
+  title: "Example/App",
+  component: TagBrowser,
+};
 export default meta;
 
-type Story = StoryObj<typeof App>;
+type Story = StoryObj<typeof TagBrowser>;
 
 const sampleResponse = {
   items: [
@@ -317,6 +320,17 @@ const sampleResponse = {
   quota_remaining: 9940,
 };
 
+const mockedGetTags = (_order: string, _sort: string) => {};
+
 export const Primary: Story = {
-  render: () => <App data={sampleResponse.items} />,
+  args: {
+    loading: true,
+  },
+  render: (args) => (
+    <TagBrowser
+      data={sampleResponse.items}
+      loading={args.loading}
+      getTags={mockedGetTags}
+    />
+  ),
 };
