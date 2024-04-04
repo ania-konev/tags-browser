@@ -1,0 +1,14 @@
+@use "./constants.module.scss";
+
+.header {
+  font-size: x-large;
+  text-align: center;
+  a {
+    color: constants.$headerColor;
+    font-weight: bold;
+  }
+}
+
+.content {
+  margin: 20px;
+}

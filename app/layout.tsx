@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-
-import "./styles/globals.css";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "app/globals.scss";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Tag Browser",
@@ -14,7 +15,11 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>
+          <AntdRegistry>{children}</AntdRegistry>
+        </Providers>
+      </body>
     </html>
   );
 }
